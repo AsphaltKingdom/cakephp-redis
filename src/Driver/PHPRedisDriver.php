@@ -8,6 +8,7 @@ use Redis;
 
 class PHPRedisDriver extends Redis implements DriverInterface
 {
+    protected $logger;
     /**
      * Initializes the Redis client
      *
@@ -71,5 +72,9 @@ class PHPRedisDriver extends Redis implements DriverInterface
             $transaction->discard();
             throw $e;
         }
+    }
+
+    public function setLogger($ilog){
+	    $this->logger=$ilog;
     }
 }
